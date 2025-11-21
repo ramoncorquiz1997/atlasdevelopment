@@ -311,7 +311,7 @@ export default function Discor() {
             {[
               { name: "CESPM", src: "/logos/cespm.jpg" },
               { name: "Las Palmas", src: "/logos/padel-palmas.jpg" },
-              { name: "Nuñez Transport", src: "/logos/clipsazo-logo.jpg" },
+              { name: "Clipsazo", src: "/logos/clipsazo_logo.jpg" },
             ].map((c) => (
               <div
                 key={c.name}
