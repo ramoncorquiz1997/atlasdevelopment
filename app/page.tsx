@@ -2,6 +2,8 @@ import React from "react";
 import ThemeToggle from "@/components/theme-toggle";
 import { FadeIn, Stagger, Item } from "@/components/motion";
 import Image from "next/image";
+import ProjectCard from "@/components/project-card";
+import { projects } from "@/data/projects";
 
 // ---- DISCOR DEVELOPMENT — Landing (Light/Dark + Motion)
 
@@ -267,26 +269,16 @@ export default function Discor() {
             subtitle="Desafío → Solución → Impacto. Algunos ejemplos representativos."
           />
           <Stagger>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <Item key={i}>
-                  <Card>
-                    <div className="space-y-3">
-                      <div className="aspect-video rounded-xl bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800" />
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-medium text-[var(--foreground)]">Proyecto #{i}</h3>
-                        <span className="text-[10px] px-2 py-1 rounded bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">
-                          Next.js • Flask
-                        </span>
-                      </div>
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                        Breve descripción del desafío y la solución implementada. Resultado medible.
-                      </p>
-                      <a href="#contact" className="text-xs text-emerald-700 dark:text-emerald-300 hover:underline">
-                        Ver detalle →
-                      </a>
-                    </div>
-                  </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {projects.slice(0, 6).map((p) => (
+                <Item key={p.slug}>
+                  <ProjectCard
+                    title={p.title}
+                    stack={p.stack}
+                    summary={p.summary}
+                    href={p.href}
+                    thumb={p.thumb}
+                  />
                 </Item>
               ))}
             </div>
