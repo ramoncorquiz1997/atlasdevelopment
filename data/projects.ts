@@ -18,14 +18,5 @@ export const projects: Project[] = [
     href: "/proyecto/clipsazo",
     thumb: "/work/clipsazo.jpg",
   },
-  {
-    slug: "renthub",
-    title: "RentHub",
-    stack: "Next.js • Flask",
-    summary:
-      "Marketplace de renta con panel de administración, pagos y verificación de usuarios.",
-    href: "/proyecto/renthub",
-    thumb: "/work/renthub.jpg",
-  },
   // agrega más… (no pasa nada si hay < 6)
 ];
