@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Atlas Development — Building the digital world",
+  title: "Discor Development — Building the digital world",
   description: "Ingeniería de software sólida, escalable y con propósito.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

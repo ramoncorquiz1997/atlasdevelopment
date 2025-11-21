@@ -3,7 +3,7 @@ import ThemeToggle from "@/components/theme-toggle";
 import { FadeIn, Stagger, Item } from "@/components/motion";
 import Image from "next/image";
 
-// ---- ATLAS DEVELOPMENT — Landing (Light/Dark + Motion)
+// ---- DISCOR DEVELOPMENT — Landing (Light/Dark + Motion)
 
 const NavLink = ({ href = "#", children }: { href?: string; children: React.ReactNode }) => (
   <a
@@ -53,7 +53,7 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-export default function AtlasDevelopmentLanding() {
+export default function Discor() {
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       {/* Header */}
@@ -64,7 +64,7 @@ export default function AtlasDevelopmentLanding() {
               A
             </div>
             <div className="leading-tight">
-              <div className="font-semibold text-sm md:text-base text-[var(--foreground)]">Atlas Development</div>
+              <div className="font-semibold text-sm md:text-base text-[var(--foreground)]">Discor Development</div>
               <div className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-400">Building the digital world</div>
             </div>
           </div>
@@ -107,8 +107,7 @@ export default function AtlasDevelopmentLanding() {
 
             <FadeIn delay={0.1}>
               <p className="text-zinc-600 dark:text-zinc-400 text-base md:text-lg max-w-xl">
-                Ingeniería y desarrollo a la medida: web, APIs, integraciones, nube e IA aplicada. Como Atlas,
-                sostenemos sistemas que crecen con tu negocio.
+                Ingeniería y desarrollo a la medida: web, APIs, integraciones, nube e IA aplicada.
               </p>
             </FadeIn>
 
@@ -364,7 +363,7 @@ export default function AtlasDevelopmentLanding() {
               />
               <div className="md:col-span-2 flex items-center justify-between">
                 <div className="text-xs text-zinc-600 dark:text-zinc-500">
-                  Al enviar aceptas ser contactado por Atlas Development.
+                  Al enviar aceptas ser contactado por Discor Development.
                 </div>
                 <button
                   type="submit"
@@ -381,11 +380,11 @@ export default function AtlasDevelopmentLanding() {
       {/* Footer */}
       <footer className="border-t border-zinc-200 dark:border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-zinc-600 dark:text-zinc-400 text-sm">
-          <div>© {new Date().getFullYear()} Atlas Development. Todos los derechos reservados.</div>
+          <div>© {new Date().getFullYear()} Discor Development. Todos los derechos reservados.</div>
           <div className="flex items-center gap-5">
             <a href="#" className="hover:text-black dark:hover:text-white">LinkedIn</a>
             <a href="#" className="hover:text-black dark:hover:text-white">GitHub</a>
-            <a href="#" className="hover:text-black dark:hover:text-white">contacto@atlasdevelopment.mx</a>
+            <a href="#" className="hover:text-black dark:hover:text-white">desarollo@discor.com.mx</a>
           </div>
         </div>
       </footer>
