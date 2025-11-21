@@ -309,13 +309,16 @@ export default function Discor() {
 
           <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-12 mt-6">
             {[
-              { name: "CESPM", src: "/logos/cespm.jpg" },
-              { name: "Las Palmas", src: "/logos/padel-palmas.jpg" },
-              { name: "Clipsazo", src: "/logos/clipsazo_logo.jpg" },
+              { name: "CESPM", src: "/logos/cespm.jpg", href: "https://www.cespm.gob.mx" },
+              { name: "Las Palmas", src: "/logos/padel-palmas.jpg", href: "https://www.instagram.com/padelpalmas" },
+              { name: "Clipsazo", src: "/logos/clipsazo_logo.jpg", href: "https://clipsazo.com" },
             ].map((c) => (
-              <div
+              <a
                 key={c.name}
-                className="flex items-center justify-center w-40 sm:w-48 md:w-56 h-24 md:h-28"
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-40 sm:w-48 md:w-56 h-24 md:h-28 group"
               >
                 <Image
                   src={c.src}
@@ -325,12 +328,12 @@ export default function Discor() {
                   className={`
                     object-contain w-full h-full
                     opacity-80 grayscale contrast-[0.9] brightness-90
-                    hover:opacity-100 hover:grayscale-0 hover:brightness-100 hover:contrast-100
+                    group-hover:opacity-100 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100
                     transition-all duration-300 ease-out
                     dark:opacity-90 dark:brightness-110
                   `}
                 />
-              </div>
+              </a>
             ))}
           </div>
         </div>
