@@ -98,7 +98,12 @@ export default function Discor() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <FadeIn>
-              <Pill>Solidez • Escalabilidad • Precisión</Pill>
+              <div className="inline-flex flex-col gap-1">
+                <span className="uppercase tracking-[0.25em] text-[10px] md:text-xs text-emerald-500/80">
+                  Discor Development
+                </span>
+                <Pill>Solidez • Escalabilidad • Precisión</Pill>
+              </div>
             </FadeIn>
 
             <FadeIn delay={0.05}>
@@ -172,17 +177,7 @@ export default function Discor() {
 
                 {/* Badge de stack, igual que antes */}
                 <div className="absolute -bottom-3 -right-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-black p-3 shadow-sm dark:shadow">
-                  <div className="text-[10px] text-zinc-500 dark:text-zinc-400">Stack</div>
-                  <div className="flex gap-2 mt-1 text-xs">
-                    {["Next.js", "Flask", "PostgreSQL", "Docker", "AWS", "Python"].map((s) => (
-                      <span
-                        key={s}
-                        className="px-2 py-1 rounded-lg bg-zinc-100 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
+                  ...
                 </div>
               </div>
             </div>
