@@ -143,15 +143,34 @@ export default function Discor() {
           {/* Hero Visual */}
           <FadeIn delay={0.12}>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black p-6">
-                <div className="grid grid-cols-6 gap-2 h-full">
-                  {[...Array(18)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl border border-zinc-200 bg-white dark:border-zinc-800/60 dark:bg-zinc-900/50"
-                    />
-                  ))}
+              <div className="aspect-[4/3] rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-gradient-to-b dark:from-zinc-900 dark:to-black p-6 overflow-hidden">
+                {/* Branding Discor dentro del panel */}
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="space-y-1">
+                    <p className="text-[10px] md:text-xs tracking-[0.25em] uppercase text-emerald-500/80">
+                      Desarrollo de software
+                    </p>
+                    <p className="text-sm md:text-base font-semibold text-[var(--foreground)]">
+                      Discor Development
+                    </p>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 max-w-xs">
+                      Consultoría, arquitectura y desarrollo a la medida para productos y equipos en crecimiento.
+                    </p>
+                  </div>
+
+                  {/* Grid “tecnológico” que ya tenías */}
+                  <div className="mt-5 grid grid-cols-6 gap-2 flex-1">
+                    {[...Array(18)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="rounded-xl border border-zinc-200 bg-white/80 
+                                  dark:border-zinc-800/60 dark:bg-zinc-900/60"
+                      />
+                    ))}
+                  </div>
                 </div>
+
+                {/* Badge de stack, igual que antes */}
                 <div className="absolute -bottom-3 -right-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-black p-3 shadow-sm dark:shadow">
                   <div className="text-[10px] text-zinc-500 dark:text-zinc-400">Stack</div>
                   <div className="flex gap-2 mt-1 text-xs">
