@@ -4,6 +4,7 @@ import { FadeIn, Stagger, Item } from "@/components/motion";
 import Image from "next/image";
 import ProjectCard from "@/components/project-card";
 import { projects } from "@/data/projects";
+import { Code2, Cloud, Share2, Cpu } from "lucide-react";
 
 // ---- DISCOR DEVELOPMENT — Landing (Light/Dark + Motion)
 
