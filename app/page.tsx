@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ThemeToggle from "@/components/theme-toggle";
 import { FadeIn, Stagger, Item } from "@/components/motion";
@@ -5,6 +7,7 @@ import Image from "next/image";
 import ProjectCard from "@/components/project-card";
 import { projects } from "@/data/projects";
 import { Code2, Cloud, Share2, Cpu } from "lucide-react";
+import { HeroGeometric } from "@/components/hero-geometric";
 
 // ---- Desarrollo Discor — Landing (Light/Dark + Motion)
 
@@ -15,13 +18,6 @@ const NavLink = ({ href = "#", children }: { href?: string; children: React.Reac
   >
     {children}
   </a>
-);
-
-const Stat = ({ value, label }: { value: string; label: string }) => (
-  <div className="flex flex-col items-start">
-    <span className="text-3xl md:text-4xl font-semibold text-foreground">{value}</span>
-    <span className="text-xs md:text-sm text-muted-foreground">{label}</span>
-  </div>
 );
 
 const SectionTitle = ({
@@ -49,15 +45,14 @@ const Card = ({ href = "#", children }: { href?: string; children: React.ReactNo
     href={href}
     className="
       group block rounded-2xl p-5 md:p-6
-      bg-white dark:bg-zinc-900/60 
-      border border-zinc-200 dark:border-zinc-800 
+      bg-card 
+      border border-border
       shadow-[0_0_0_1px_rgba(0,0,0,0.02)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.02)]
       transition-all duration-300
-
-      hover:border-emerald-500/40
-      hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.15)]
-      dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]
-      hover:bg-emerald-50/30 dark:hover:bg-emerald-400/5
+      hover:border-primary/60
+      hover:shadow-[0_0_25px_-5px_hsla(var(--primary),0.35)]
+      dark:hover:shadow-[0_0_25px_-5px_hsla(var(--primary),0.45)]
+      hover:bg-muted/60 dark:hover:bg-card/80
       hover:-translate-y-1
     "
   >
@@ -71,8 +66,8 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
       inline-flex items-center
       px-3 py-1 rounded-full
       text-[10px] md:text-xs tracking-wide
-      bg-emerald-500/10 text-emerald-400
-      border border-emerald-500/30
+      bg-primary/10 text-primary
+      border border-primary/30
     "
   >
     {children}
@@ -81,24 +76,60 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
 
 export default function Discor() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* ===== FONDO GLOBAL CON DETALLES EN COLOR PRIMARIO ===== */}
+      <div
+        aria-hidden
+        className="
+          pointer-events-none fixed inset-0 -z-20
+          bg-[radial-gradient(circle_at_top,hsla(var(--primary),0.18),transparent_60%),radial-gradient(circle_at_bottom,hsla(var(--primary),0.12),transparent_55%)]
+        "
+      />
+      <div
+        aria-hidden
+        className="
+          pointer-events-none fixed inset-0 -z-30 opacity-[0.11]
+          [background-image:linear-gradient(to_right,hsla(var(--primary),0.25)_1px,transparent_1px),linear-gradient(to_bottom,hsla(var(--primary),0.25)_1px,transparent_1px)]
+          [background-size:80px_80px]
+        "
+      />
+
       {/* Header */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/5 dark:bg-black/30 border-b border-border shadow-[0_1px_0_0_rgba(0,0,0,0.05)]">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="size-8 md:size-9 grid place-items-center rounded-lg bg-primary text-primary-foreground font-bold">
-              D
+          {/* LOGO */}
+          <a href="/" className="flex items-center">
+            <div className="relative h-10 w-[200px]">
+              {/* Logo light */}
+              <Image
+                src="/logos/discor-light.png"
+                alt="Desarrollo Discor"
+                fill
+                priority
+                className="
+                  absolute inset-0
+                  object-contain
+                  transition-opacity duration-300
+                  opacity-100 dark:opacity-0
+                "
+              />
+              {/* Logo dark */}
+              <Image
+                src="/logos/discor-dark.png"
+                alt="Desarrollo Discor"
+                fill
+                priority
+                className="
+                  absolute inset-0
+                  object-contain
+                  transition-opacity duration-300
+                  opacity-0 dark:opacity-100
+                "
+              />
             </div>
-            <div className="leading-tight">
-              <div className="font-semibold text-sm md:text-base text-foreground">
-                Desarrollo DISCOR
-              </div>
-              <div className="text-[10px] md:text-xs text-muted-foreground">
-                Building the digital world
-              </div>
-            </div>
-          </div>
+          </a>
 
+          {/* NAV */}
           <nav className="hidden md:flex items-center gap-6">
             <NavLink href="#services">Servicios</NavLink>
             <NavLink href="#about">Nosotros</NavLink>
@@ -107,6 +138,7 @@ export default function Discor() {
             <NavLink href="#contact">Contacto</NavLink>
           </nav>
 
+          {/* Botones */}
           <div className="flex items-center gap-2">
             <a
               href="#contact"
@@ -119,93 +151,11 @@ export default function Discor() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_10%,rgba(16,185,129,0.12)_0%,transparent_60%)]" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-center relative">
-          <div className="space-y-6">
-            <FadeIn>
-              <div className="inline-flex flex-col items-start gap-2">
-                <span className="text-4xl md:text-6xl font-semibold text-emerald-600 dark:text-emerald-400 leading-none">
-                  Desarrollo DISCOR
-                </span>
-                <Pill>Solidez • Escalabilidad • Precisión</Pill>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.05}>
-              <h1 className="text-xl md:text-4xl font-semibold leading-tight text-foreground">
-                Construimos software <span className="text-primary">sólido</span> y
-                <span className="text-primary"> escalable</span> para tu futuro digital
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              <p className="text-base md:text-lg text-muted-foreground max-w-xl">
-                Ingeniería y desarrollo a la medida: web, APIs, integraciones, nube e IA aplicada.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.15}>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  className="px-5 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
-                >
-                  Solicitar cotización
-                </a>
-                <a
-                  href="#work"
-                  className="px-5 py-3 rounded-xl border border-border hover:bg-muted"
-                >
-                  Ver proyectos
-                </a>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.2}>
-              <div className="flex gap-8 pt-4">
-                <Stat value="> 50k" label="Usuarios finales impactados" />
-                <Stat value="99.9%" label="Disponibilidad de servicios" />
-                <Stat value="> 8 años" label="de experiencia acumulada" />
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Hero Visual */}
-          <FadeIn delay={0.12}>
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-3xl border border-border bg-muted p-6">
-                <div className="grid grid-cols-6 gap-2 h-full">
-                  {[...Array(18)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="rounded-xl border border-border bg-card/80"
-                    />
-                  ))}
-                </div>
-
-                <div className="absolute -bottom-3 -right-3 rounded-2xl border border-border bg-card p-3 shadow-sm">
-                  <div className="text-[10px] text-muted-foreground">Stack</div>
-                  <div className="flex gap-2 mt-1 text-xs">
-                    {["Next.js", "Flask", "PostgreSQL", "Docker", "AWS", "Python"].map((s) => (
-                      <span
-                        key={s}
-                        className="px-2 py-1 rounded-lg bg-muted border border-border"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+      {/* HERO NUEVO (ya toma bg-background y respeta el theme) */}
+      <HeroGeometric />
 
       {/* Services */}
-      <section id="services" className="py-14 md:py-20 border-t border-border">
+      <section id="services" className="py-14 md:py-20 border-t border-border relative">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
           <SectionTitle
             kicker="Servicios"
@@ -261,7 +211,7 @@ export default function Discor() {
       </section>
 
       {/* About */}
-      <section id="about" className="py-14 md:py-20 border-t border-border">
+      <section id="about" className="py-14 md:py-20 border-t border-border relative">
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10 items-center">
           <FadeIn>
             <div className="space-y-4">
@@ -317,7 +267,7 @@ export default function Discor() {
       </section>
 
       {/* Work */}
-      <section id="work" className="py-14 md:py-20 border-t border-border">
+      <section id="work" className="py-14 md:py-20 border-t border-border relative">
         <div className="max-w-7xl mx-auto px-4 md:px-6 space-y-10">
           <SectionTitle
             kicker="Casos"
@@ -345,7 +295,7 @@ export default function Discor() {
       {/* Clients */}
       <section
         id="clients"
-        className="py-20 border-t border-border bg-background"
+        className="py-20 border-t border-border bg-background relative"
       >
         <div className="max-w-6xl mx-auto px-6 space-y-12">
           <SectionTitle
@@ -386,33 +336,70 @@ export default function Discor() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-20 border-t border-border">
+      <section id="contact" className="py-20 border-t border-border relative">
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <SectionTitle
             kicker="Contacto"
             title="Cuéntanos tu proyecto"
-            subtitle="Te respondemos en menos de 24 horas hábiles."
+            subtitle="WhatsApp es nuestro canal principal. También puedes escribirnos por correo."
           />
 
-          <FadeIn delay={0.05}>
+          <FadeIn delay={0.02}>
+            <div className="flex justify-center mt-10">
+              <a
+                href="https://wa.me/526461093694?text=Hola%2C%20vengo%20de%20la%20web%20de%20Desarrollo%20Discor%20y%20quiero%20información%20sobre%20un%20proyecto."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  px-8 py-4 rounded-2xl font-semibold
+                  bg-primary text-primary-foreground
+                  shadow-[0_0_25px_-6px_hsla(var(--primary),0.45)]
+                  hover:shadow-[0_0_35px_-6px_hsla(var(--primary),0.7)]
+                  hover:opacity-90
+                  transition-all flex items-center gap-3
+                  text-lg
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.67.15-.198.297-.768.967-.94 1.165-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.007-.372-.009-.57-.009-.198 0-.52.074-.792.372-.272.298-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.87.118.57-.085 1.758-.718 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                </svg>
+                Escríbenos por WhatsApp
+              </a>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
             <div
               className="
-                mt-12 p-8 md:p-10 rounded-3xl
+                mt-14 p-8 md:p-10 rounded-3xl
                 bg-card/60 backdrop-blur
                 border border-border
-                shadow-[0_0_25px_-8px_rgba(16,185,129,0.15)]
+                shadow-[0_0_25px_-8px_hsla(var(--primary),0.25)]
                 transition-all
               "
             >
-              <form className="grid md:grid-cols-2 gap-6">
-                
-                {/* Campo */}
+              <p className="text-muted-foreground text-sm mb-6">
+                Si prefieres enviarnos un correo, llena el formulario:
+              </p>
+
+              <form
+                className="grid md:grid-cols-2 gap-6"
+                action="/api/contact"
+                method="POST"
+              >
                 <div className="relative">
                   <label className="absolute -top-2 left-3 bg-card px-1 text-[10px] text-muted-foreground">
                     Nombre
                   </label>
                   <input
+                    name="name"
                     placeholder="Tu nombre"
+                    required
                     className="w-full rounded-xl bg-background border border-border text-foreground
                               placeholder:text-muted-foreground px-4 py-3 outline-none
                               focus:border-primary/60 transition"
@@ -424,8 +411,10 @@ export default function Discor() {
                     Correo
                   </label>
                   <input
+                    name="email"
                     type="email"
                     placeholder="tucorreo@empresa.com"
+                    required
                     className="w-full rounded-xl bg-background border border-border text-foreground
                               placeholder:text-muted-foreground px-4 py-3 outline-none
                               focus:border-primary/60 transition"
@@ -437,6 +426,7 @@ export default function Discor() {
                     Empresa (opcional)
                   </label>
                   <input
+                    name="company"
                     placeholder="Nombre de tu empresa"
                     className="w-full rounded-xl bg-background border border-border text-foreground
                               placeholder:text-muted-foreground px-4 py-3 outline-none
@@ -449,8 +439,10 @@ export default function Discor() {
                     Alcance del proyecto
                   </label>
                   <textarea
+                    name="message"
                     placeholder="Cuéntanos brevemente qué necesitas"
                     rows={5}
+                    required
                     className="w-full rounded-xl bg-background border border-border text-foreground
                               placeholder:text-muted-foreground px-4 py-3 outline-none
                               focus:border-primary/60 transition"
@@ -461,23 +453,26 @@ export default function Discor() {
                   <div className="text-xs text-muted-foreground">
                     Al enviar aceptas ser contactado por Desarrollo Discor.
                   </div>
+
                   <button
                     type="submit"
-                    className="px-6 py-3 rounded-xl bg-primary text-primary-foreground
-                              font-medium hover:shadow-[0_0_20px_-4px_rgba(16,185,129,0.5)]
-                              hover:-translate-y-0.5 transition-all"
+                    className="
+                      px-6 py-3 rounded-xl bg-primary text-primary-foreground
+                      font-medium
+                      hover:shadow-[0_0_20px_-4px_hsla(var(--primary),0.5)]
+                      hover:-translate-y-0.5
+                      transition-all
+                    "
                   >
-                    Enviar
+                    Enviar correo
                   </button>
                 </div>
-              
               </form>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-border">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div>© {new Date().getFullYear()} Desarrollo Discor. Todos los derechos reservados.</div>

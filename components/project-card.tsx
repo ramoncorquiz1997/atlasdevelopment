@@ -22,13 +22,16 @@ export default function ProjectCard({ title, stack, summary, href, thumb }: Prop
         bg-card border border-border
         shadow-[0_0_0_1px_rgba(0,0,0,0.02)] dark:shadow-[0_0_0_1px_rgba(255,255,255,0.02)]
         transition-all duration-300
-        hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.18)]
-        dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.28)]
+        
+        hover:shadow-[0_0_25px_-5px_hsla(var(--primary),0.30)]
+        dark:hover:shadow-[0_0_25px_-5px_hsla(var(--primary),0.45)]
+        
         hover:-translate-y-1
         focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-0
       "
     >
       <div className="space-y-3">
+
         {/* Thumb */}
         <div className="aspect-video rounded-xl border border-border/60 bg-muted overflow-hidden">
           {thumb ? (
