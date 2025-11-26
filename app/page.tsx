@@ -181,15 +181,18 @@ export default function Discor() {
           <Stagger>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {[
-                { t: "Software a la medida", d: "Arquitectura, backend, frontend y QA. Del discovery al despliegue." },
-                { t: "Web & Cloud", d: "SaaS, PWAs y microservicios sobre nubes modernas." },
-                { t: "Integraciones & APIs", d: "Conecta ERPs, CRMs, pasarelas de pago y servicios externos." },
-                { t: "IA & Automatización", d: "Modelos, RAG, asistentes y flujos que ahorran tiempo." },
+                { t: "Software a la medida", d: "Arquitectura, backend, frontend y QA. Del discovery al despliegue.", icon: Code2 },
+                { t: "Web & Cloud", d: "SaaS, PWAs y microservicios sobre nubes modernas.", icon: Cloud },
+                { t: "Integraciones & APIs", d: "Conecta ERPs, CRMs, pasarelas de pago y servicios externos.", icon: Share2 },
+                { t: "IA & Automatización", d: "Modelos, RAG, asistentes y flujos que ahorran tiempo.", icon: Cpu },
               ].map((c) => (
                 <Item key={c.t}>
                   <Card>
                     <div className="flex flex-col gap-3">
-                      <div className="size-10 rounded-xl bg-emerald-100/60 border border-emerald-600/20 dark:bg-emerald-400/10 dark:border-emerald-500/20" />
+                      <div className="size-10 rounded-xl bg-emerald-100/60 border border-emerald-600/20 dark:bg-emerald-400/10 dark:border-emerald-500/20 grid place-items-center">
+                        <c.icon className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />
+                      </div>
+
                       <h3 className="text-lg font-medium text-[var(--foreground)]">{c.t}</h3>
                       <p className="text-sm text-zinc-600 dark:text-zinc-400">{c.d}</p>
                       <a href="#contact" className="text-xs text-emerald-700 dark:text-emerald-300 hover:underline">
