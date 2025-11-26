@@ -98,10 +98,11 @@ export default function Discor() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <FadeIn>
-              <div className="inline-flex flex-col gap-1">
-                <span className="uppercase tracking-[0.25em] text-[10px] md:text-xs text-emerald-500/80">
+              <div className="inline-flex flex-col gap-2">
+                <span className="text-lg md:text-2xl font-semibold text-emerald-600 dark:text-emerald-400">
                   Discor Development
                 </span>
+
                 <Pill>Solidez • Escalabilidad • Precisión</Pill>
               </div>
             </FadeIn>
