@@ -18,5 +18,13 @@ export const projects: Project[] = [
     href: "/proyecto/clipsazo",
     thumb: "/work/clipsazo.jpg",
   },
-  // agrega más… (no pasa nada si hay < 6)
+  {
+    slug: "aduanex",
+    title: "Aduanex",
+    stack: "Next.js • Python • PostgreSQL • Odoo",
+    summary:
+      "SaaS aduanal para agencias: genera pedimentos alineados al Anexo 22, motor de reglas por clave de pedimento, validaciones estructurales y portal de seguimiento para clientes.",
+    href: "/proyecto/aduanex",
+    thumb: "/work/aduanex.jpg",
+  },
 ];
