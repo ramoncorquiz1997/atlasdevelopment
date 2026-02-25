@@ -25,6 +25,6 @@ export const projects: Project[] = [
     summary:
       "SaaS aduanal para agencias: genera pedimentos alineados al Anexo 22, motor de reglas por clave de pedimento, validaciones estructurales y portal de seguimiento para clientes.",
     href: "/proyecto/aduanex",
-    thumb: "/work/aduanex.jpg",
+    thumb: "/work/horizontal.png",
   },
 ];
