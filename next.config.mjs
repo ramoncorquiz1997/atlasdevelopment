@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export',      // <--- Añade esto para generar archivos estáticos (.html, .css, .js)
+  // Se eliminó 'output: export' para permitir que el servidor de Node.js maneje las rutas
   images: {
-    unoptimized: true,   // <--- Obligatorio si usas el componente <Image> de Next.js sin servidor
+    unoptimized: true,
   },
   experimental: {
     typedRoutes: true
